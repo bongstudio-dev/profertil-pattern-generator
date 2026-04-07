@@ -16,7 +16,7 @@
   </head>
   <body>
     <div class="app-shell" id="app-shell">
-      <aside class="sidebar workspace-module draggable-section slot-item" id="sidebar-module" data-module-id="sidebar" data-slot-group="module">
+      <aside class="sidebar workspace-module" id="sidebar-module" data-module-id="sidebar" data-slot-group="module">
         <div class="brand-block">
           <span class="eyebrow">Bong x Profertil</span>
           <h1>Pattern Generator</h1>
@@ -70,8 +70,11 @@
         <section class="panel">
           <div class="panel-head">
             <h2>Variables generativas</h2>
-            <button class="mini-action" id="randomize-button" type="button">Randomizar</button>
           </div>
+          <section class="randomizer-strip">
+            <div class="mini-pill-group" id="randomize-mode-pills" aria-label="Perfil de randomizado"></div>
+            <button class="mini-action" id="randomize-button" type="button">Randomizar</button>
+          </section>
           <div class="field">
             <span>Estructura</span>
             <div class="pill-group" id="layout-pills"></div>
@@ -80,7 +83,7 @@
         </section>
       </aside>
 
-      <main class="preview-module workspace-module draggable-section slot-item" id="preview-module" data-module-id="preview" data-slot-group="module">
+      <main class="preview-module workspace-module" id="preview-module" data-module-id="preview" data-slot-group="module">
         <section class="preview-stage">
           <div class="preview-frame" id="preview-frame">
             <div class="preview-surface">
@@ -90,7 +93,7 @@
         </section>
       </main>
 
-      <footer class="control-dock workspace-module draggable-section slot-item" id="dock-module" data-module-id="dock" data-slot-group="module">
+      <footer class="control-dock workspace-module" id="dock-module" data-module-id="dock" data-slot-group="module">
         <div class="dock-cluster" id="ratio-dock">
           <div class="pill-group" id="ratio-pills"></div>
         </div>
