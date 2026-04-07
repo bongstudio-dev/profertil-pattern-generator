@@ -1,6 +1,29 @@
 # Profertil Pattern Generator
 
-Tool web estática para construir patterns del sistema de marca Profertil a partir de una librería de SVGs, con preview en vivo, variables generativas, layouts modulares y exportación lista para diseño.
+Tool web estática para construir patterns a partir del sistema visual canónico de Profertil.
+
+No es una herramienta de exploración libre ni una reinterpretación estética del sistema: traduce a un entorno funcional el **manual de marca Profertil 2026**, su **paleta cromática oficial** y la librería **Sistemas de Formas de Profertil**, diseñada por **Bong**.
+
+La herramienta busca descentralizar el uso del sistema de formas y habilitar una aplicación más extensiva que la de máscaras o composiciones puntuales, manteniendo intacta la lógica de color, combinación y comportamiento visual definida por marca.
+
+Esto no reemplaza instancias de revisión o aprobación final, pero sí ordena y sistematiza la construcción de composiciones posibles dentro del marco canónico del sistema.
+
+## Contexto
+
+El proyecto toma como base:
+
+- el **manual de marca Profertil 2026**
+- la paleta cromática oficial de la marca
+- la librería **Sistemas de Formas de Profertil**
+- la lógica visual definida por Bong para la aplicación del sistema
+
+La premisa central es simple:
+
+- no hay criterio personal ni interpretación formal en la definición del sistema
+- las formas, colores y combinaciones responden al marco canónico de marca
+- la herramienta convierte esa lógica en un sistema operativo y utilizable
+
+En ese sentido, el generador no “inventa” combinaciones nuevas, sino que habilita composiciones posibles que obedecen al sistema de fondo.
 
 ## Stack
 
@@ -31,7 +54,7 @@ python3 -m http.server 4173
 
 ## Qué hace la herramienta
 
-- Permite elegir una forma base desde la librería SVG de Profertil.
+- Permite elegir una forma base desde la librería SVG **Sistemas de Formas de Profertil**.
 - Permite elegir una combinación cromática oficial e invertir figura/fondo.
 - Genera patterns sobre distintos aspect ratios.
 - Permite exportar en `SVG`, `PNG` y `JPG`.
@@ -39,6 +62,22 @@ python3 -m http.server 4173
   - la sidebar puede pasar de izquierda a derecha
   - el preview puede alternar de lado dentro del layout principal
   - el dock puede ir arriba o abajo
+
+## Alcance del sistema
+
+La herramienta está pensada para producir variaciones posibles dentro de una estructura cerrada de marca.
+
+Eso implica que:
+
+- todas las combinaciones habilitadas por la herramienta responden a la lógica del sistema
+- todas las combinaciones disponibles son válidas a priori dentro de ese marco
+- la herramienta no trabaja con colores o formas fuera del universo aprobado
+- la generación no busca “estilos nuevos”, sino ampliar el uso consistente del sistema
+
+Al mismo tiempo:
+
+- la existencia de una combinación posible no reemplaza criterios de aprobación
+- las piezas generadas pueden seguir requiriendo validación según contexto, soporte o campaña
 
 ## Estructura de la interfaz
 
@@ -91,6 +130,18 @@ El sistema usa las combinaciones oficiales de Profertil:
 - `Naranja / Terra`
 
 Además, cada combinación puede invertirse para alternar entre figura y fondo.
+
+Estas combinaciones están basadas en el **manual de marca Profertil 2026** y no fueron definidas como criterio interpretativo de la herramienta.
+
+## Biblioteca de formas
+
+La librería utilizada por la tool se llama:
+
+- **Sistemas de Formas de Profertil**
+
+Cada SVG cargado en la aplicación pertenece a ese sistema y se utiliza como componente base para la construcción de patterns.
+
+La herramienta no modifica la lógica original de las formas; las pone en funcionamiento dentro de un sistema modular de repetición y exportación.
 
 ## Estructuras de pattern
 
@@ -152,10 +203,27 @@ La interfaz no usa drag libre. Usa un sistema de slots:
 
 La lógica está pensada como layout flexible, no como ventanas flotantes.
 
+## Espacio combinatorio
+
+Tomando solo la base del sistema:
+
+- `18` formas
+- `4` combinaciones cromáticas
+- `2` órdenes figura/fondo
+- `6` aspect ratios
+- `3` estructuras de pattern
+
+Eso da:
+
+- `2.592` configuraciones base antes de considerar sliders o variaciones generativas
+
+Al sumar escala, ritmo, solapamiento, orientación y semilla, la cantidad de resultados posibles crece de forma muy amplia, siempre dentro del marco del sistema canónico.
+
 ## Branding
 
-- Crédito fijo abajo a la derecha: `Desarrollado por Bong`
-- Link a [https://bongstudio.ar](https://bongstudio.ar)
+- Desarrollo y sistema de formas: **Bong**
+- Aplicación de la lógica visual de Profertil en entorno funcional: esta tool
+- Enlace de atribución: [https://bongstudio.ar](https://bongstudio.ar)
 
 ## Estructura de archivos
 
