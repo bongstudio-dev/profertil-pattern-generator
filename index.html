@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profertil Pattern Generator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="app-shell" id="app-shell">
+      <aside class="sidebar workspace-module draggable-section slot-item" id="sidebar-module" data-module-id="sidebar" data-slot-group="module">
+        <div class="brand-block">
+          <span class="eyebrow">Bong x Profertil</span>
+          <h1>Pattern Generator</h1>
+          <p>
+            Generador rápido para construir patrones del sistema Profertil con preview,
+            combinaciones cromáticas y exportación lista para diseño.
+          </p>
+        </div>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Forma base</h2>
+          </div>
+          <label class="field">
+            <div class="shape-select-row">
+              <button class="shape-nav" id="shape-prev" type="button" aria-label="Forma anterior">‹</button>
+              <select id="shape-select"></select>
+              <button class="shape-nav" id="shape-next" type="button" aria-label="Forma siguiente">›</button>
+            </div>
+          </label>
+          <div class="shape-card">
+            <div class="shape-thumb" id="shape-thumb"></div>
+            <div class="shape-meta">
+              <strong id="shape-name">Cargando...</strong>
+              <span id="shape-dimensions">-</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Color</h2>
+          </div>
+          <div class="field">
+            <div class="shape-select-row">
+              <button class="shape-nav" id="palette-prev" type="button" aria-label="Color anterior">‹</button>
+              <div class="color-select-display" id="color-select-display"></div>
+              <button class="shape-nav" id="palette-next" type="button" aria-label="Color siguiente">›</button>
+            </div>
+          </div>
+          <div class="palette-grid" id="palette-grid"></div>
+          <label class="pretty-switch" for="invert-colors">
+            <input type="checkbox" id="invert-colors" />
+            <span class="pretty-switch-track">
+              <span class="pretty-switch-thumb"></span>
+            </span>
+            <span class="pretty-switch-label">Invertir figura/fondo</span>
+          </label>
+        </section>
+
+        <section class="panel">
+          <div class="panel-head">
+            <h2>Variables generativas</h2>
+          </div>
+          <div class="field">
+            <span>Estructura</span>
+            <div class="pill-group" id="layout-pills"></div>
+          </div>
+          <div class="slider-stack" id="slider-stack"></div>
+        </section>
+      </aside>
+
+      <main class="preview-module workspace-module draggable-section slot-item" id="preview-module" data-module-id="preview" data-slot-group="module">
+        <section class="preview-stage">
+          <div class="preview-frame" id="preview-frame">
+            <div class="preview-surface">
+              <svg id="preview-svg" xmlns="http://www.w3.org/2000/svg" aria-label="Pattern preview"></svg>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer class="control-dock workspace-module draggable-section slot-item" id="dock-module" data-module-id="dock" data-slot-group="module">
+        <div class="dock-cluster" id="ratio-dock">
+          <div class="pill-group" id="ratio-pills"></div>
+        </div>
+
+        <div class="dock-cluster" id="export-dock">
+          <div class="pill-group" id="export-format-pills"></div>
+          <button class="export-button" id="export-button" type="button">Exportar</button>
+        </div>
+      </footer>
+    </div>
+
+    <a class="bong-credit" href="https://bongstudio.ar" target="_blank" rel="noreferrer">
+      <span>Desarrollado por</span>
+      <svg viewBox="0 0 66 78" aria-hidden="true">
+        <path d="M58.4946 5.4015C61.7586 8.7101 63.8526 13.3115 63.8526 18.3591C63.8526 23.4066 61.7586 27.9926 58.4946 31.3166C55.1843 34.6867 50.642 36.7181 45.5916 36.7181C40.5412 36.7181 35.9989 34.6714 32.7347 31.3166C29.4704 28.008 27.3763 23.4066 27.3763 18.3591C27.3763 13.3115 29.4704 8.7256 32.7347 5.4015C35.9989 2.0313 40.5874 0 45.5916 0C50.5958 0 55.1843 2.0467 58.4946 5.4015Z"/>
+        <path d="M21.9571 5.61687C22.7731 7.75597 22.7731 10.3105 21.9571 12.4958C21.1872 14.4348 19.8168 16.066 17.7689 16.9278C28.2238 18.7591 27.6234 36.1948 15.875 36.1948H0.015625V0.569275H14.4585C18.3387 0.569275 20.833 2.75457 21.9571 5.61687Z"/>
+        <path d="M0 40.565L0.0307999 76.7753H13.4728H25.1749V41.0268H13.4728V56.1233L0.600498 40.565H0Z"/>
+        <path d="M46.4542 58.7706L55.9547 42.3352C53.3984 40.9963 50.5037 40.2423 47.4242 40.2423C37.2464 40.2423 28.9934 48.4907 28.9934 58.6629C28.9934 68.8353 37.2464 77.0833 47.4242 77.0833C57.6017 77.0833 65.8087 68.8963 65.8547 58.7552H46.4542V58.7706Z"/>
+      </svg>
+    </a>
+
+    <script src="./script.js"></script>
+  </body>
+  </html>
