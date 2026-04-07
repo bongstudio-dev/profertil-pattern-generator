@@ -110,6 +110,7 @@ const els = {
   invertColors: document.querySelector("#invert-colors"),
   layoutPills: document.querySelector("#layout-pills"),
   sliderStack: document.querySelector("#slider-stack"),
+  randomizeButton: document.querySelector("#randomize-button"),
   previewStage: document.querySelector(".preview-stage"),
   previewFrame: document.querySelector("#preview-frame"),
   previewSurface: document.querySelector(".preview-surface"),
@@ -119,6 +120,12 @@ const els = {
   ratioPills: document.querySelector("#ratio-pills"),
   exportFormatPills: document.querySelector("#export-format-pills"),
   exportButton: document.querySelector("#export-button")
+};
+
+const VISIBLE_SLIDERS_BY_LAYOUT = {
+  grid: ["scale", "rhythmX", "rhythmY", "direction", "overlap"],
+  brick: ["scale", "rhythmX", "rhythmY", "directionEven", "directionOdd", "stagger", "overlap"],
+  cluster: ["seed", "scale", "rhythmX", "rhythmY", "overlap"]
 };
 
 function cleanShapeName(fileName) {
@@ -284,12 +291,7 @@ function buildPaletteGrid() {
 function buildSliders() {
   els.sliderStack.innerHTML = "";
   const layout = activeLayout();
-  const visibleSlidersByLayout = {
-    grid: ["scale", "rhythmX", "rhythmY", "direction", "overlap"],
-    brick: ["scale", "rhythmX", "rhythmY", "directionEven", "directionOdd", "stagger", "overlap"],
-    cluster: ["seed", "scale", "rhythmX", "rhythmY", "overlap"]
-  };
-  const visibleIds = visibleSlidersByLayout[layout.id] || [];
+  const visibleIds = VISIBLE_SLIDERS_BY_LAYOUT[layout.id] || [];
 
   SLIDERS.forEach((slider) => {
     if (!visibleIds.includes(slider.id)) return;
@@ -356,6 +358,39 @@ function buildLayoutPills() {
     });
     els.layoutPills.appendChild(button);
   });
+}
+
+function randomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function randomFrom(list) {
+  return list[randomInt(0, list.length - 1)];
+}
+
+function randomizeGenerator() {
+  state.shapeId = randomFrom(state.shapes).id;
+  state.paletteId = randomFrom(PALETTES).id;
+  state.invertColors = Math.random() > 0.5;
+  state.layoutId = randomFrom(LAYOUTS).id;
+
+  const visibleIds = VISIBLE_SLIDERS_BY_LAYOUT[state.layoutId] || [];
+
+  visibleIds.forEach((sliderId) => {
+    const slider = SLIDERS.find((item) => item.id === sliderId);
+    if (!slider) return;
+
+    if (sliderId === "direction" || sliderId === "directionEven" || sliderId === "directionOdd") {
+      state.controls[sliderId] = randomInt(0, 3);
+      return;
+    }
+
+    state.controls[sliderId] = randomInt(slider.min, slider.max);
+  });
+
+  els.shapeSelect.value = state.shapeId;
+  buildSliders();
+  render();
 }
 
 function buildRatioPills() {
@@ -1042,6 +1077,7 @@ async function init() {
   buildSliders();
   buildRatioPills();
   buildExportPills();
+  els.randomizeButton.addEventListener("click", randomizeGenerator);
   els.exportButton.addEventListener("click", exportCurrentPattern);
   initDraggableSections();
   window.addEventListener("resize", render);

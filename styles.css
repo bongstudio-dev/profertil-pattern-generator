@@ -228,6 +228,26 @@ select {
   letter-spacing: -0.02em;
 }
 
+.mini-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 34px;
+  padding: 8px 12px;
+  border: 1px solid var(--stroke);
+  border-radius: 999px;
+  background: #ffffff;
+  color: var(--text);
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.mini-action:hover {
+  border-color: rgba(6, 32, 79, 0.18);
+}
+
 .field {
   display: flex;
   flex-direction: column;
